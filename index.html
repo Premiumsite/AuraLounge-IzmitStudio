@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aura Lounge İzmit | Premium Kuaför & Saç Tasarım</title>
+  <meta name="description" content="Aura Lounge İzmit Ömerağa’da premium kuaför deneyimi. Saç kesimi, boya, ombre, bakım, fön ve özel gün saç tasarımı için WhatsApp üzerinden hızlı randevu alın." />
+  <meta name="theme-color" content="#09060b" />
+  <meta property="og:title" content="Aura Lounge İzmit | Premium Kuaför" />
+  <meta property="og:description" content="İzmit Ömerağa’da 5,0 puanlı premium kuaför deneyimi. WhatsApp randevu ve konum bilgileri." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#09060b;
+      --bg2:#120a14;
+      --panel:rgba(255,255,255,.075);
+      --panel2:rgba(255,255,255,.105);
+      --line:rgba(255,255,255,.16);
+      --text:#fff8f1;
+      --muted:#cdbfbb;
+      --gold:#f5c66d;
+      --rose:#ff5fa8;
+      --violet:#9a5cff;
+      --mint:#98ffe5;
+      --shadow:0 30px 90px rgba(0,0,0,.55);
+      --radius:28px;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0}
+    html{scroll-behavior:smooth}
+    body{
+      font-family:'Manrope',system-ui,sans-serif;
+      background:var(--bg);
+      color:var(--text);
+      overflow-x:hidden;
+      line-height:1.55;
+    }
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    body:before{
+      content:"";
+      position:fixed;inset:0;z-index:-5;
+      background:
+        radial-gradient(circle at 18% 12%, rgba(255,95,168,.22), transparent 30%),
+        radial-gradient(circle at 82% 18%, rgba(154,92,255,.24), transparent 31%),
+        radial-gradient(circle at 50% 92%, rgba(245,198,109,.18), transparent 34%),
+        linear-gradient(135deg,#07050a 0%,#160918 45%,#06040a 100%);
+    }
+    body:after{
+      content:"";
+      position:fixed;inset:0;z-index:-4;opacity:.5;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size:70px 70px;
+      mask-image:radial-gradient(circle at center, black, transparent 78%);
+      pointer-events:none;
+    }
+
+    .aurora{
+      position:fixed;inset:-20%;z-index:-3;filter:blur(55px);opacity:.75;pointer-events:none;
+      background:
+        conic-gradient(from 180deg at 50% 50%, rgba(255,95,168,.0), rgba(255,95,168,.35), rgba(154,92,255,.36), rgba(245,198,109,.27), rgba(255,95,168,.0));
+      animation:spin 20s linear infinite;
+    }
+    .particles{position:fixed;inset:0;z-index:-2;overflow:hidden;pointer-events:none}
+    .particles i{position:absolute;width:2px;height:2px;border-radius:50%;background:rgba(255,255,255,.8);box-shadow:0 0 18px rgba(255,255,255,.85);animation:floatUp linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    @keyframes floatUp{from{transform:translateY(108vh);opacity:0}15%,70%{opacity:1}to{transform:translateY(-20vh);opacity:0}}
+
+    .progress{position:fixed;left:0;top:0;height:3px;background:linear-gradient(90deg,var(--rose),var(--gold),var(--violet));z-index:9999;width:0;box-shadow:0 0 25px rgba(255,95,168,.85)}
+    .nav{
+      position:fixed;top:16px;left:50%;transform:translateX(-50%);z-index:1000;
+      width:min(1180px,calc(100% - 28px));
+      display:flex;align-items:center;justify-content:space-between;gap:18px;
+      padding:14px 16px;border:1px solid var(--line);border-radius:999px;
+      background:rgba(11,7,13,.58);backdrop-filter:blur(22px);box-shadow:0 18px 70px rgba(0,0,0,.36);
+      transition:.35s ease;
+    }
+    .nav.hide{transform:translate(-50%,-105px)}
+    .brand{display:flex;align-items:center;gap:11px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;font-size:13px;white-space:nowrap}
+    .brand span{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:linear-gradient(135deg,var(--rose),var(--gold));box-shadow:0 0 30px rgba(255,95,168,.4);color:#160710;font-weight:900}
+    .links{display:flex;align-items:center;gap:22px;color:#f5e7de;font-size:13px;font-weight:700}
+    .links a{opacity:.82;transition:.25s}.links a:hover{opacity:1;color:var(--gold)}
+    .nav-cta{display:flex;gap:10px}
+
+    .btn{
+      position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:13px 18px;
+      display:inline-flex;align-items:center;justify-content:center;gap:9px;font-size:13px;font-weight:800;letter-spacing:.02em;
+      background:rgba(255,255,255,.07);box-shadow:0 16px 45px rgba(0,0,0,.25);transition:.28s ease;white-space:nowrap;cursor:pointer;
+    }
+    .btn:before{content:"";position:absolute;inset:-2px;background:linear-gradient(120deg,transparent,var(--gold),var(--rose),transparent);transform:translateX(-110%);transition:.65s ease;opacity:.7}
+    .btn:hover{transform:translateY(-3px);box-shadow:0 22px 60px rgba(255,95,168,.18);border-color:rgba(245,198,109,.5)}
+    .btn:hover:before{transform:translateX(110%)}
+    .btn b{position:relative;z-index:1}
+    .primary{background:linear-gradient(135deg,var(--gold),#fff1b8 45%,var(--rose));color:#19070e;border:0;box-shadow:0 20px 70px rgba(245,198,109,.24)}
+    .pink{background:linear-gradient(135deg,#ff5fa8,#9a5cff);border:0;color:white}
+
+    .hero{min-height:100svh;display:grid;align-items:center;padding:138px 22px 70px;position:relative;isolation:isolate;overflow:hidden}.hero:before{content:"";position:absolute;inset:92px 22px 30px;border:1px solid rgba(245,198,109,.16);border-radius:46px;background:linear-gradient(135deg,rgba(255,255,255,.035),rgba(255,255,255,.01));box-shadow:inset 0 0 90px rgba(255,95,168,.06);pointer-events:none}.hero:after{content:"";position:absolute;left:50%;top:52%;width:min(900px,92vw);height:min(900px,92vw);border-radius:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,rgba(245,198,109,.12),rgba(255,95,168,.08) 35%,transparent 66%);filter:blur(8px);z-index:-1;animation:pulseAura 6s ease-in-out infinite}@keyframes pulseAura{0%,100%{opacity:.65;transform:translate(-50%,-50%) scale(.96)}50%{opacity:1;transform:translate(-50%,-50%) scale(1.05)}}
+    .hero-wrap{width:min(1220px,100%);margin:auto;display:grid;grid-template-columns:1.04fr .96fr;gap:46px;align-items:center;position:relative;z-index:2}.hero-luxury-line{display:flex;align-items:center;gap:14px;margin:0 0 18px;color:#fff1dd;font-size:12px;font-weight:900;letter-spacing:.22em;text-transform:uppercase}.hero-luxury-line span{height:1px;flex:1;max-width:94px;background:linear-gradient(90deg,var(--gold),transparent)}.hero-signature{display:flex;align-items:center;gap:14px;margin:22px 0 30px;color:#f1ddd4}.signature-mark{width:76px;height:76px;border-radius:50%;display:grid;place-items:center;border:1px solid rgba(245,198,109,.34);background:radial-gradient(circle,rgba(245,198,109,.2),rgba(255,255,255,.05));font-family:'Cormorant Garamond',serif;font-size:34px;color:var(--gold);box-shadow:0 0 55px rgba(245,198,109,.16)}.hero-signature p{font-size:13px;color:var(--muted);font-weight:800;letter-spacing:.06em;text-transform:uppercase}.hero-signature strong{display:block;color:#fff;font-size:15px;letter-spacing:0;text-transform:none;margin-top:2px}
+    .eyebrow{display:inline-flex;align-items:center;gap:10px;color:var(--gold);font-weight:900;letter-spacing:.18em;text-transform:uppercase;font-size:12px;margin-bottom:18px}
+    .eyebrow:before{content:"";width:38px;height:1px;background:linear-gradient(90deg,var(--gold),transparent)}
+    h1{font-family:'Cormorant Garamond',serif;font-size:clamp(58px,8vw,128px);line-height:.86;letter-spacing:-.055em;font-weight:700;margin-bottom:24px}
+    .shine{background:linear-gradient(90deg,#fff7ed,var(--gold),#ff77b7,#fff7ed);background-size:280% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 7s ease-in-out infinite;text-shadow:0 0 60px rgba(255,95,168,.2)}
+    @keyframes shine{0%,100%{background-position:0%}50%{background-position:100%}}
+    .lead{font-size:clamp(16px,2vw,20px);color:#eadbd5;max-width:680px;margin-bottom:28px}
+    .hero-actions{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:28px}
+    .trust-row{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px;max-width:720px}
+    .trust-mini{padding:16px;border:1px solid var(--line);border-radius:22px;background:rgba(255,255,255,.065);backdrop-filter:blur(16px);box-shadow:0 15px 40px rgba(0,0,0,.18)}
+    .trust-mini strong{display:block;font-size:22px;color:#fff}.trust-mini span{font-size:12px;color:var(--muted);font-weight:700}
+
+    .visual{position:relative;min-height:620px;perspective:1100px}
+    .halo{position:absolute;inset:6% 0 0 7%;border-radius:48% 52% 45% 55%;background:linear-gradient(135deg,rgba(255,95,168,.36),rgba(154,92,255,.25),rgba(245,198,109,.22));filter:blur(12px);animation:morph 9s ease-in-out infinite;box-shadow:0 0 120px rgba(255,95,168,.25)}
+    @keyframes morph{0%,100%{border-radius:48% 52% 45% 55%;transform:rotate(0) scale(1)}50%{border-radius:58% 42% 57% 43%;transform:rotate(6deg) scale(1.04)}}
+    .portrait{
+      position:absolute;inset:0 0 0 9%;border-radius:46px;overflow:hidden;border:1px solid rgba(255,255,255,.17);
+      background:
+        linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02)),
+        linear-gradient(135deg,rgba(255,95,168,.24),rgba(154,92,255,.18),rgba(245,198,109,.14)),url('https://images.unsplash.com/photo-1521590832167-7bcbfaa6381f?auto=format&fit=crop&w=1400&q=85'),linear-gradient(135deg,#2a1024,#0a050d 55%,#342109);
+      background-size:cover;background-position:center;box-shadow:var(--shadow);transform:rotateY(-8deg) rotateX(3deg);
+    }
+    .portrait:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.08),rgba(0,0,0,.58));z-index:1}
+    .portrait:after{content:"AURA";position:absolute;left:-18px;bottom:28px;z-index:2;font-family:'Cormorant Garamond',serif;font-size:110px;font-weight:700;letter-spacing:.08em;color:rgba(255,255,255,.08);writing-mode:vertical-rl;line-height:.8}
+    .floating-card{position:absolute;z-index:4;border:1px solid var(--line);background:rgba(12,7,14,.68);backdrop-filter:blur(20px);border-radius:25px;padding:17px 18px;box-shadow:0 24px 70px rgba(0,0,0,.42);animation:levitate 5.5s ease-in-out infinite}
+    .floating-card.one{left:-12px;top:70px}.floating-card.two{right:-10px;bottom:95px;animation-delay:-2s}.floating-card.three{left:35px;bottom:30px;animation-delay:-3s}.hero-orbit{position:absolute;inset:34px;border:1px solid rgba(245,198,109,.18);border-radius:46px;z-index:3;pointer-events:none;animation:orbitGlow 5s ease-in-out infinite}.hero-orbit:before,.hero-orbit:after{content:"";position:absolute;width:10px;height:10px;border-radius:50%;background:var(--gold);box-shadow:0 0 28px var(--gold)}.hero-orbit:before{left:12%;top:-5px}.hero-orbit:after{right:16%;bottom:-5px}@keyframes orbitGlow{0%,100%{opacity:.45;transform:scale(.985)}50%{opacity:1;transform:scale(1)}}
+    .floating-card strong{display:block;color:var(--gold);font-size:14px}.floating-card span{font-size:12px;color:var(--muted);font-weight:700}
+    @keyframes levitate{0%,100%{transform:translateY(0)}50%{transform:translateY(-18px)}}
+
+    section{padding:95px 22px;position:relative}
+    .container{width:min(1180px,100%);margin:auto}
+    .section-head{display:flex;align-items:end;justify-content:space-between;gap:28px;margin-bottom:34px}
+    .section-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(42px,5vw,74px);line-height:.92;letter-spacing:-.035em;max-width:720px}
+    .section-head p{max-width:430px;color:var(--muted);font-weight:600}
+    .divider{height:1px;background:linear-gradient(90deg,transparent,var(--gold),rgba(255,95,168,.7),transparent);margin:28px 0 0;position:relative}.divider:after{content:"";position:absolute;left:50%;top:50%;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 28px var(--gold);transform:translate(-50%,-50%)}
+
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{position:relative;overflow:hidden;border:1px solid var(--line);border-radius:var(--radius);background:linear-gradient(180deg,rgba(255,255,255,.095),rgba(255,255,255,.045));padding:28px;box-shadow:0 24px 85px rgba(0,0,0,.24);transition:.33s ease;min-height:230px}
+    .card:before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 20% 10%,rgba(255,95,168,.22),transparent 36%),radial-gradient(circle at 90% 80%,rgba(245,198,109,.16),transparent 40%);opacity:0;transition:.35s}.card:hover{transform:translateY(-10px);border-color:rgba(245,198,109,.45);box-shadow:0 35px 110px rgba(255,95,168,.13)}.card:hover:before{opacity:1}
+    .card > *{position:relative;z-index:1}.num{font-family:'Cormorant Garamond',serif;font-size:46px;color:var(--gold);line-height:1}.card h3{font-size:20px;margin:14px 0 9px}.card p{color:var(--muted);font-size:14px;font-weight:600}
+
+    .split{display:grid;grid-template-columns:.95fr 1.05fr;gap:22px;align-items:stretch}
+    .big-panel{border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.065);padding:34px;box-shadow:var(--shadow);overflow:hidden;position:relative}
+    .big-panel:before{content:"";position:absolute;width:260px;height:260px;border-radius:50%;background:rgba(255,95,168,.22);filter:blur(50px);right:-90px;top:-90px}.big-panel > *{position:relative;z-index:1}
+    .big-panel h3{font-family:'Cormorant Garamond',serif;font-size:48px;line-height:.98;margin-bottom:15px}.big-panel p{color:var(--muted);font-weight:600;margin-bottom:18px}
+    .list{display:grid;gap:12px;margin-top:20px}.list li{list-style:none;display:flex;gap:11px;align-items:flex-start;color:#f4e8e0;font-weight:700}.dot{width:9px;height:9px;margin-top:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 18px var(--gold);flex:0 0 auto}
+
+    .gallery{display:grid;grid-template-columns:1.2fr .8fr .8fr;grid-auto-rows:250px;gap:16px}.shot{border-radius:30px;border:1px solid var(--line);overflow:hidden;position:relative;background:linear-gradient(135deg,rgba(255,95,168,.22),rgba(245,198,109,.12)),#140b16;box-shadow:0 22px 75px rgba(0,0,0,.33)}.shot:first-child{grid-row:span 2}.shot img,.shot video{width:100%;height:100%;object-fit:cover;opacity:.92;transition:.5s}.shot:hover img,.shot:hover video{transform:scale(1.045);opacity:1}.shot:before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 48%,rgba(0,0,0,.68));z-index:2;pointer-events:none}.shot:after{content:attr(data-label);position:absolute;left:18px;bottom:16px;z-index:3;padding:9px 12px;border-radius:999px;background:rgba(0,0,0,.42);backdrop-filter:blur(12px);font-size:12px;font-weight:800;color:#fff3e5;border:1px solid rgba(255,255,255,.16)}.play-badge{position:absolute;top:16px;right:16px;z-index:3;width:48px;height:48px;border-radius:50%;display:grid;place-items:center;background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.24);backdrop-filter:blur(14px);box-shadow:0 0 38px rgba(255,95,168,.35);transition:.25s;cursor:pointer}.shot:hover .play-badge{transform:scale(1.08);background:linear-gradient(135deg,var(--rose),var(--gold));}.play-badge:before{content:"";width:0;height:0;border-top:9px solid transparent;border-bottom:9px solid transparent;border-left:15px solid #fff;margin-left:4px}.video-modal{position:fixed;inset:0;z-index:5000;display:none;align-items:center;justify-content:center;padding:22px;background:rgba(4,2,6,.84);backdrop-filter:blur(24px)}.video-modal.active{display:flex}.video-stage{width:min(980px,96vw);border:1px solid rgba(255,255,255,.18);border-radius:34px;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.035));box-shadow:0 40px 160px rgba(0,0,0,.72);overflow:hidden;position:relative}.video-stage video{width:100%;max-height:76vh;object-fit:contain;background:#050306;display:block}.video-controls{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;background:rgba(12,7,14,.88);border-top:1px solid rgba(255,255,255,.12)}.control-left,.control-right{display:flex;align-items:center;gap:10px}.control-btn{border:1px solid rgba(255,255,255,.16);background:rgba(255,255,255,.08);color:#fff;border-radius:999px;padding:10px 13px;font-weight:900;cursor:pointer;transition:.2s}.control-btn:hover{background:linear-gradient(135deg,var(--rose),var(--gold));color:#16070d;transform:translateY(-2px)}.close-video{position:absolute;right:14px;top:14px;z-index:5;width:44px;height:44px;border-radius:50%;border:1px solid rgba(255,255,255,.22);background:rgba(0,0,0,.35);color:#fff;font-size:22px;cursor:pointer;backdrop-filter:blur(12px)}.speed-pill{font-size:12px;color:var(--muted);font-weight:900;min-width:38px;text-align:center}.video-title{font-size:13px;color:#fff;font-weight:900;letter-spacing:.08em;text-transform:uppercase}
+
+    .reviews{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.review{padding:25px;border-radius:28px;border:1px solid var(--line);background:rgba(255,255,255,.07);box-shadow:0 22px 70px rgba(0,0,0,.24)}.stars{color:var(--gold);letter-spacing:3px;margin-bottom:12px}.review p{color:#efe1d8;font-weight:600}.review strong{display:block;margin-top:18px;color:#fff}
+
+    .contact{display:grid;grid-template-columns:1fr 1fr;gap:20px}.info-card{border:1px solid var(--line);border-radius:34px;background:rgba(255,255,255,.07);padding:30px;box-shadow:var(--shadow)}.info-card h3{font-family:'Cormorant Garamond',serif;font-size:44px;margin-bottom:12px}.info-row{display:flex;gap:13px;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.09);color:#f1e4dd;font-weight:700}.info-row:last-child{border-bottom:0}.map{min-height:420px;border:1px solid var(--line);border-radius:34px;overflow:hidden;box-shadow:var(--shadow);background:#120a14}.map iframe{width:100%;height:100%;border:0;filter:saturate(1.05) contrast(1.05)}
+
+    .final-cta{padding:70px 28px;border-radius:40px;border:1px solid rgba(245,198,109,.26);background:linear-gradient(135deg,rgba(245,198,109,.17),rgba(255,95,168,.12),rgba(154,92,255,.13));box-shadow:0 35px 120px rgba(255,95,168,.13);text-align:center;overflow:hidden;position:relative}.final-cta h2{font-family:'Cormorant Garamond',serif;font-size:clamp(44px,6vw,86px);line-height:.9;margin-bottom:16px}.final-cta p{max-width:710px;margin:0 auto 24px;color:#eadbd5;font-weight:600}
+
+    footer{padding:42px 22px;border-top:1px solid rgba(255,255,255,.09);color:var(--muted)}.foot{width:min(1180px,100%);margin:auto;display:flex;justify-content:space-between;gap:22px;flex-wrap:wrap;font-size:13px;font-weight:700}
+    .float-actions{position:fixed;right:18px;bottom:18px;z-index:1001;display:grid;gap:12px}.float-actions a{width:58px;height:58px;border-radius:22px;display:grid;place-items:center;border:1px solid rgba(255,255,255,.18);background:rgba(12,7,14,.72);backdrop-filter:blur(18px);box-shadow:0 18px 55px rgba(0,0,0,.45);font-weight:900;transition:.25s}.float-actions a:hover{transform:translateY(-5px);background:linear-gradient(135deg,var(--rose),var(--gold));color:#17070d}.float-actions svg{width:24px;height:24px}
+
+    .reveal{opacity:0;transform:translateY(34px);transition:opacity .75s ease, transform .75s ease}.reveal.show{opacity:1;transform:none}
+
+    @media(max-width:920px){
+      .hero:before{inset:86px 12px 22px;border-radius:32px}.hero-signature{margin:18px 0 24px}.signature-mark{width:58px;height:58px;font-size:28px}.hero-luxury-line{letter-spacing:.14em}
+      
+      .links{display:none}.nav{top:10px}.nav-cta .btn:nth-child(2){display:none}
+      .hero{padding-top:120px}.hero-wrap,.split,.contact{grid-template-columns:1fr}.visual{min-height:520px;order:-1}.portrait{inset:0}.floating-card.two{right:6px}.trust-row,.grid,.reviews{grid-template-columns:1fr}.section-head{display:block}.section-head p{margin-top:14px}.gallery{grid-template-columns:1fr;grid-auto-rows:260px}.shot:first-child{grid-row:span 1}section{padding:72px 18px}h1{font-size:64px}.hero-actions .btn{width:100%}.nav-cta{display:none}.float-actions{right:12px;bottom:12px}.float-actions a{width:54px;height:54px;border-radius:19px}
+    }
+    @media(max-width:520px){.hero-luxury-line span{max-width:48px}.hero-signature{align-items:flex-start}.hero-signature p{font-size:11px}.hero-signature strong{font-size:13px}
+      .brand{font-size:11px}.brand span{width:31px;height:31px}.nav{padding:12px}.hero{padding-left:16px;padding-right:16px}.visual{min-height:440px}.floating-card{padding:13px}.floating-card.three{display:none}.portrait:after{font-size:74px}.trust-mini{padding:14px}.card,.big-panel,.info-card{padding:22px}.big-panel h3,.info-card h3{font-size:38px}}
+  </style>
+</head>
+<body>
+  <div class="progress" id="progress"></div>
+  <div class="aurora"></div>
+  <div class="particles" id="particles"></div>
+
+  <nav class="nav" id="nav">
+    <a class="brand" href="#top"><span>A</span> Aura Lounge</a>
+    <div class="links">
+      <a href="#hizmetler">Hizmetler</a>
+      <a href="#galeri">Galeri</a>
+      <a href="#yorumlar">Yorumlar</a>
+      <a href="#iletisim">İletişim</a>
+    </div>
+    <div class="nav-cta">
+      <a class="btn" href="tel:+905011004241"><b>Ara</b></a>
+      <a class="btn primary" href="https://wa.me/905011004241?text=Merhaba%20Aura%20Lounge%20randevu%20almak%20istiyorum" target="_blank" rel="noopener"><b>Randevu Al</b></a>
+    </div>
+  </nav>
+
+  <header class="hero" id="top">
+    <div class="hero-wrap">
+      <div class="copy reveal">
+        <div class="hero-luxury-line"><span></span> İzmit Ömerağa <span></span></div>
+        <div class="eyebrow">Premium hair lounge experience</div>
+        <h1><span class="shine">Aura Lounge</span><br>saçta imza duruş</h1>
+        <p class="lead">İzmit merkezde saç kesimi boya ombre bakım ve özel gün hazırlığını butik salon konforuyla birleştiren modern kuaför deneyimi</p>
+        <div class="hero-signature">
+          <div class="signature-mark">A</div>
+          <p>Aura signature touch<strong>renk form parlaklık ve net bitiş aynı çizgide</strong></p>
+        </div>
+        <div class="hero-actions">
+          <a class="btn primary" href="https://wa.me/905011004241?text=Merhaba%20Aura%20Lounge%20randevu%20almak%20istiyorum" target="_blank" rel="noopener"><b>WhatsApp Randevu</b></a>
+          <a class="btn pink" href="tel:+905011004241"><b>Hemen Ara</b></a>
+          <a class="btn" href="https://www.instagram.com/aurallounge/" target="_blank" rel="noopener"><b>Instagram</b></a>
+        </div>
+        <div class="trust-row">
+          <div class="trust-mini"><strong>5,0</strong><span>google değerlendirmesi</span></div>
+          <div class="trust-mini"><strong>Ömerağa</strong><span>merkez konum</span></div>
+          <div class="trust-mini"><strong>10:00 20:00</strong><span>randevu saatleri</span></div>
+        </div>
+      </div>
+      <div class="visual reveal">
+        <div class="halo"></div>
+        <div class="portrait"></div>
+        <div class="hero-orbit"></div>
+        <div class="floating-card one"><strong>Signature Color</strong><span>ışıltılı boya ve tonlama</span></div>
+        <div class="floating-card two"><strong>Luxury Care</strong><span>bakım odaklı saç ritüeli</span></div>
+        <div class="floating-card three"><strong>Fast Contact</strong><span>tek dokunuşla randevu</span></div>
+      </div>
+    </div>
+  </header>
+
+  <section id="hizmetler">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>saçta net sonuç isteyenlere özel premium hizmetler</h2>
+        <p>Her işlem saç yapısına yüz formuna ve istenen stile göre planlanır amaç sadece güzel görünmek değil uzun süre iyi duran temiz bir sonuç almaktır</p>
+      </div>
+      <div class="divider reveal"></div>
+      <div class="grid" style="margin-top:34px">
+        <article class="card reveal"><div class="num">01</div><h3>Kesim & Stil Danışmanlığı</h3><p>Yüz hattına uygun modern kesim kat formu ve günlük kullanımda rahat şekil alan saç tasarımı</p></article>
+        <article class="card reveal"><div class="num">02</div><h3>Boya & Tonlama</h3><p>Canlı parlak ve dengeli renk geçişleriyle saçın ışığını yükselten profesyonel boya uygulamaları</p></article>
+        <article class="card reveal"><div class="num">03</div><h3>Ombre & Işıltı</h3><p>Doğal geçişli balyaj ombre sombre ve yumuşak ışıltı çalışmaları</p></article>
+        <article class="card reveal"><div class="num">04</div><h3>Fön & Şekillendirme</h3><p>Günlük şıklık davet hazırlığı ve pürüzsüz bitişli profesyonel fön deneyimi</p></article>
+        <article class="card reveal"><div class="num">05</div><h3>Keratin & Bakım</h3><p>Yıpranmış saçlara parlaklık yumuşaklık ve daha kontrollü görünüm kazandıran bakım ritüelleri</p></article>
+        <article class="card reveal"><div class="num">06</div><h3>Özel Gün Saçı</h3><p>Nişan davet çekim ve özel günler için zarif kalıcı ve fotoğrafta güçlü duran saç tasarımları</p></article>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container split">
+      <div class="big-panel reveal">
+        <h3>işlemden önce saç analizi işlemden sonra temiz bitiş</h3>
+        <p>Aura Lounge deneyimi hızlı bir kuaför işlemi gibi değil kontrollü ve özenli bir güzellik seansı gibi kurgulanır</p>
+        <ul class="list">
+          <li><span class="dot"></span><span>Saç yapısına göre boya ve bakım planı</span></li>
+          <li><span class="dot"></span><span>Yüz formuna yakışan kesim ve şekillendirme</span></li>
+          <li><span class="dot"></span><span>Parlaklık doku ve kalıcılık odaklı profesyonel yaklaşım</span></li>
+          <li><span class="dot"></span><span>WhatsApp üzerinden hızlı randevu ve kolay iletişim</span></li>
+        </ul>
+      </div>
+      <div class="big-panel reveal">
+        <h3>neden Aura Lounge</h3>
+        <p>İzmit merkezde ulaşımı kolay konum güçlü müşteri memnuniyeti ve premium atmosferle saç deneyimini daha keyifli hale getirir</p>
+        <div class="grid" style="grid-template-columns:1fr 1fr;margin-top:22px">
+          <div class="trust-mini"><strong>Ömerağa</strong><span>İzmit merkez konum</span></div>
+          <div class="trust-mini"><strong>5,0</strong><span>güven veren puan</span></div>
+          <div class="trust-mini"><strong>6 gün</strong><span>randevu alınabilir</span></div>
+          <div class="trust-mini"><strong>premium</strong><span>modern salon hissi</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>video galeri</h2>
+      </div>
+      <div class="gallery reveal">
+        <div class="shot video-shot" data-label="Aura video 01" data-video="1.mp4">
+          <video src="1.mp4" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"></video>
+          <img style="display:none" src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?auto=format&fit=crop&w=1200&q=85" alt="premium salon atmosferi">
+          <span class="play-badge"></span>
+        </div>
+        <div class="shot video-shot" data-label="Aura video 02" data-video="2.mp4">
+          <video src="2.mp4" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"></video>
+          <img style="display:none" src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&w=1000&q=85" alt="premium kuaför çalışması">
+          <span class="play-badge"></span>
+        </div>
+        <div class="shot video-shot" data-label="Aura video 03" data-video="3.mp4">
+          <video src="3.mp4" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"></video>
+          <img style="display:none" src="https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1000&q=85" alt="özel gün saç tasarımı">
+          <span class="play-badge"></span>
+        </div>
+        <div class="shot video-shot" data-label="Aura video 04" data-video="4.mp4">
+          <video src="4.mp4" autoplay muted loop playsinline preload="metadata" onerror="this.style.display='none';this.nextElementSibling.style.display='block'"></video>
+          <img style="display:none" src="https://images.unsplash.com/photo-1595476108010-b4d1f102b1b1?auto=format&fit=crop&w=1000&q=85" alt="parlak saç detayı">
+          <span class="play-badge"></span>
+        </div>
+        <div class="shot" data-label="Premium atmosfer">
+          <img src="https://images.unsplash.com/photo-1633681926035-ec1ac984418a?auto=format&fit=crop&w=1000&q=85" alt="premium kuaför salonu">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="yorumlar">
+    <div class="container">
+      <div class="section-head reveal">
+        <h2>güven veren salon deneyimi</h2>
+      </div>
+      <div class="reviews">
+        <div class="review reveal"><div class="stars">★★★★★</div><p>Modern salon hissi profesyonel yaklaşım ve temiz sonuç beklentisiyle gelen müşteriler için güven veren bir deneyim</p><strong>Aura Lounge misafir yorumu</strong></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>Saç rengi kesim ve bakım tarafında özenli planlama isteyenler için İzmit merkezde güçlü tercih</p><strong>Google memnuniyet algısı</strong></div>
+        <div class="review reveal"><div class="stars">★★★★★</div><p>Kolay ulaşım hızlı iletişim ve WhatsApp randevu akışıyla müşteri için zahmetsiz süreç</p><strong>Randevu deneyimi</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="final-cta reveal">
+        <h2>bugün saçına yeni bir aura ver</h2>
+        <p>Randevu almak hizmetleri sormak veya konum almak için tek dokunuş yeterli</p>
+        <div class="hero-actions" style="justify-content:center;margin:0">
+          <a class="btn primary" href="https://wa.me/905011004241?text=Merhaba%20Aura%20Lounge%20randevu%20almak%20istiyorum" target="_blank" rel="noopener"><b>WhatsApp'tan Yaz</b></a>
+          <a class="btn pink" href="tel:+905011004241"><b>0501 100 42 41</b></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="iletisim">
+    <div class="container contact">
+      <div class="info-card reveal">
+        <h3>iletişim ve randevu</h3>
+        <div class="info-row"><span>Adres</span><span>Ömerağa Salim Efendi Sk No:8 D:A 41300 İzmit Kocaeli</span></div>
+        <div class="info-row"><span>Telefon</span><span>0501 100 42 41</span></div>
+        <div class="info-row"><span>Instagram</span><span>@aurallounge</span></div>
+        <div class="info-row"><span>Saatler</span><span>Pazartesi Cumartesi 10:00 20:00 Pazar kapalı</span></div>
+        <div class="hero-actions" style="margin-top:24px;margin-bottom:0">
+          <a class="btn primary" href="https://wa.me/905011004241?text=Merhaba%20Aura%20Lounge%20randevu%20almak%20istiyorum" target="_blank" rel="noopener"><b>Randevu Al</b></a>
+          <a class="btn" href="https://www.instagram.com/aurallounge/" target="_blank" rel="noopener"><b>Instagram Aç</b></a>
+        </div>
+      </div>
+      <div class="map reveal">
+        <iframe loading="lazy" allowfullscreen referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=%C3%96mera%C4%9Fa%20Salim%20Efendi%20Sk.%20No%3A8%20D%3AA%2041300%20%C4%B0zmit%20Kocaeli&output=embed"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <div class="video-modal" id="videoModal">
+    <div class="video-stage">
+      <button class="close-video" id="closeVideo" aria-label="Kapat">×</button>
+      <video id="modalVideo" playsinline></video>
+      <div class="video-controls">
+        <div class="control-left">
+          <button class="control-btn" id="playPause">Durdur</button>
+          <button class="control-btn" id="muteToggle">Ses Aç</button>
+          <span class="video-title" id="videoTitle">Aura video</span>
+        </div>
+        <div class="control-right">
+          <button class="control-btn" id="speedDown">−</button>
+          <span class="speed-pill" id="speedText">1x</span>
+          <button class="control-btn" id="speedUp">+</button>
+          <button class="control-btn" id="fullScreen">Tam Ekran</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="foot">
+      <span>© 2026 Aura Lounge İzmit</span>
+      <span>premium web deneyimi powered by Penumbra Digital Studio</span>
+    </div>
+  </footer>
+
+  <div class="float-actions">
+    <a href="https://wa.me/905011004241?text=Merhaba%20Aura%20Lounge%20randevu%20almak%20istiyorum" target="_blank" rel="noopener" aria-label="WhatsApp">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M20.5 11.7a8.4 8.4 0 0 1-12.4 7.4L4 20.2l1.1-4a8.4 8.4 0 1 1 15.4-4.5Z" stroke="currentColor" stroke-width="1.8"/><path d="M9.2 8.4c.2-.5.4-.5.7-.5h.6c.2 0 .4.1.5.4l.7 1.6c.1.3 0 .5-.1.7l-.4.5c-.1.2-.2.3 0 .6.4.7 1.2 1.7 2.3 2.2.3.2.5.1.6-.1l.7-.8c.2-.2.4-.3.7-.2l1.6.7c.3.1.4.3.4.5 0 .6-.4 1.5-1 1.8-.6.3-1.6.5-3.4-.3-2.8-1.2-4.5-3.9-4.7-4.2-.1-.3-1.1-1.6-.7-2.9Z" fill="currentColor"/></svg>
+    </a>
+    <a href="tel:+905011004241" aria-label="Ara">
+      <svg viewBox="0 0 24 24" fill="none"><path d="M6.6 3.8 9 3.2c.6-.1 1.2.2 1.4.8l1 2.5c.2.5 0 1.1-.4 1.4L9.6 9c.9 1.9 2.4 3.4 4.3 4.3l1.1-1.4c.4-.4.9-.6 1.4-.4l2.6 1c.6.2.9.8.8 1.4l-.6 2.4c-.1.6-.6 1-1.2 1C10.5 17.4 4.6 11.5 4.6 5c0-.6.4-1.1 1-1.2Z" stroke="currentColor" stroke-width="1.9"/></svg>
+    </a>
+  </div>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"HairSalon","name":"Aura Lounge İzmit","telephone":"+905011004241","address":{"@type":"PostalAddress","streetAddress":"Ömerağa Salim Efendi Sk No:8 D:A","addressLocality":"İzmit","addressRegion":"Kocaeli","postalCode":"41300","addressCountry":"TR"},"aggregateRating":{"@type":"AggregateRating","ratingValue":"5.0","reviewCount":"24"},"openingHours":["Mo-Sa 10:00-20:00"],"sameAs":["https://www.instagram.com/aurallounge/"]}
+  </script>
+  <script>
+    const particles=document.getElementById('particles');
+    for(let i=0;i<70;i++){
+      const s=document.createElement('i');
+      s.style.left=Math.random()*100+'%';
+      s.style.animationDuration=(9+Math.random()*15)+'s';
+      s.style.animationDelay=(-Math.random()*18)+'s';
+      s.style.opacity=.25+Math.random()*.75;
+      particles.appendChild(s);
+    }
+
+    const reveals=document.querySelectorAll('.reveal');
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');io.unobserve(entry.target)}})
+    },{threshold:.12});
+    reveals.forEach(el=>io.observe(el));
+
+    const nav=document.getElementById('nav');
+    let last=0;
+    window.addEventListener('scroll',()=>{
+      const y=window.scrollY;
+      document.getElementById('progress').style.width=(y/(document.body.scrollHeight-innerHeight))*100+'%';
+      if(y>120 && y>last) nav.classList.add('hide'); else nav.classList.remove('hide');
+      last=y;
+    },{passive:true});
+
+    document.addEventListener('mousemove',e=>{
+      if(innerWidth<920) return;
+      const x=(e.clientX/innerWidth-.5)*16;
+      const y=(e.clientY/innerHeight-.5)*16;
+      document.querySelectorAll('.visual').forEach(v=>v.style.transform=`translate3d(${x}px,${y}px,0)`);
+    });
+
+    const modal=document.getElementById('videoModal');
+    const modalVideo=document.getElementById('modalVideo');
+    const playPause=document.getElementById('playPause');
+    const muteToggle=document.getElementById('muteToggle');
+    const speedText=document.getElementById('speedText');
+    const videoTitle=document.getElementById('videoTitle');
+    let speed=1;
+
+    document.querySelectorAll('.video-shot').forEach(card=>{
+      card.addEventListener('click',()=>{
+        const src=card.dataset.video;
+        modal.classList.add('active');
+        modalVideo.src=src;
+        modalVideo.muted=false;
+        modalVideo.playbackRate=1;
+        speed=1;
+        speedText.textContent='1x';
+        videoTitle.textContent=card.dataset.label || 'Aura video';
+        modalVideo.play();
+        playPause.textContent='Durdur';
+        muteToggle.textContent='Sesi Kapat';
+      });
+    });
+
+    function closeModal(){
+      modal.classList.remove('active');
+      modalVideo.pause();
+      modalVideo.removeAttribute('src');
+      modalVideo.load();
+    }
+    document.getElementById('closeVideo').addEventListener('click',closeModal);
+    modal.addEventListener('click',e=>{ if(e.target===modal) closeModal(); });
+    document.addEventListener('keydown',e=>{ if(e.key==='Escape') closeModal(); });
+
+    playPause.addEventListener('click',()=>{
+      if(modalVideo.paused){ modalVideo.play(); playPause.textContent='Durdur'; }
+      else{ modalVideo.pause(); playPause.textContent='Oynat'; }
+    });
+    muteToggle.addEventListener('click',()=>{
+      modalVideo.muted=!modalVideo.muted;
+      muteToggle.textContent=modalVideo.muted?'Ses Aç':'Sesi Kapat';
+    });
+    document.getElementById('speedUp').addEventListener('click',()=>{
+      speed=Math.min(2,speed+.25); modalVideo.playbackRate=speed; speedText.textContent=speed+'x';
+    });
+    document.getElementById('speedDown').addEventListener('click',()=>{
+      speed=Math.max(.5,speed-.25); modalVideo.playbackRate=speed; speedText.textContent=speed+'x';
+    });
+    document.getElementById('fullScreen').addEventListener('click',()=>{
+      if(modalVideo.requestFullscreen) modalVideo.requestFullscreen();
+      else if(modalVideo.webkitRequestFullscreen) modalVideo.webkitRequestFullscreen();
+    });
+  </script>
+</body>
+</html>
